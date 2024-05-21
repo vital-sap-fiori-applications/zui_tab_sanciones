@@ -1,0 +1,2054 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_TABLERO_NOMINA_SRV" xml:lang="es" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZCDS_C_NOMINA_PERSONAResult" sap:semantics="aggregate" sap:label="CDS Consumo Tablero de Nómina  Persona" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZCALMONTH" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZSUCURS1_T" sap:label="Sucursales" sap:value-list="fixed-values"/>
+                <Property Name="ZSUCURS1_T" Type="Edm.String" MaxLength="20" sap:label="Sucursales" sap:quickinfo="Sucursales Texto"/>
+                <Property Name="ZREGIONAL" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZREGIONAL_T" sap:label="Regional" sap:value-list="fixed-values"/>
+                <Property Name="ZREGIONAL_T" Type="Edm.String" MaxLength="20" sap:label="Regional" sap:quickinfo="Descripción breve"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:value-list="standard"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Posición"/>
+                <Property Name="ZEMPLOYEE_COD" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Legajo"/>
+                <Property Name="ZEMPLOYEE" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZEMPLOYEE_T" sap:label="Nombre"/>
+                <Property Name="ZEMPLOYEE_T" Type="Edm.String" MaxLength="40" sap:label="Nombre"/>
+                <Property Name="GENERO" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Género"/>
+                <Property Name="JORNADA" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Jornada"/>
+                <Property Name="ANTIGUEDAD_RANGO" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Antiguedad Rango"/>
+                <Property Name="FECHA_ALTA" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Fecha Ingreso"/>
+                <Property Name="FECHA_BAJA" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Fecha Baja"/>
+                <Property Name="FECHA_BAJA_T" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Activo / Baja"/>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Sector" sap:value-list="fixed-values"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Area" sap:quickinfo="Area Texto"/>
+                <Property Name="ZDIRECCION" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Dirección"/>
+                <Property Name="ANTIGUEDAD" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="dimension" sap:label="Antigüedad"/>
+                <Property Name="ANTIGUEDAD_TOTAL" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Antigüedad" sap:filterable="false"/>
+                <Property Name="COSTCENTER" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Centro de Costos"/>
+                <NavigationProperty Name="to_area" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_8E225F2432C12B39B6A771817CC003E4" FromRole="FromRole_assoc_8E225F2432C12B39B6A771817CC003E4" ToRole="ToRole_assoc_8E225F2432C12B39B6A771817CC003E4"/>
+                <NavigationProperty Name="to_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_B8AF700EEAECD8500CEB4EB20A9E6890" FromRole="FromRole_assoc_B8AF700EEAECD8500CEB4EB20A9E6890" ToRole="ToRole_assoc_B8AF700EEAECD8500CEB4EB20A9E6890"/>
+                <NavigationProperty Name="to_gerente" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_6A41D19F39BA15ECC98BA80DF2679B2E" FromRole="FromRole_assoc_6A41D19F39BA15ECC98BA80DF2679B2E" ToRole="ToRole_assoc_6A41D19F39BA15ECC98BA80DF2679B2E"/>
+                <NavigationProperty Name="to_post_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_53CE91CC4672A519EA7D849E385AE2DD" FromRole="FromRole_assoc_53CE91CC4672A519EA7D849E385AE2DD" ToRole="ToRole_assoc_53CE91CC4672A519EA7D849E385AE2DD"/>
+                <NavigationProperty Name="to_sucursal" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_6FA1FEB6493FA938BA2D247AF437B8FE" FromRole="FromRole_assoc_6FA1FEB6493FA938BA2D247AF437B8FE" ToRole="ToRole_assoc_6FA1FEB6493FA938BA2D247AF437B8FE"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_2FD884B33C7F999BC9792382D7A0E302" FromRole="ToRole_assoc_2FD884B33C7F999BC9792382D7A0E302" ToRole="FromRole_assoc_2FD884B33C7F999BC9792382D7A0E302" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCDS_C_NOMINA_PERSONAParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_FMES"/>
+                </Key>
+                <Property Name="P_FMES" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_2FD884B33C7F999BC9792382D7A0E302" FromRole="FromRole_assoc_2FD884B33C7F999BC9792382D7A0E302" ToRole="ToRole_assoc_2FD884B33C7F999BC9792382D7A0E302"/>
+            </EntityType>
+            <EntityType Name="ZCDS_C_NOMINA_SECSUCResult" sap:semantics="aggregate" sap:label="CDS consumo tablero nomina sucursal sect" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZCALMONTH" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZSUCURS1_T" sap:label="Sucursales" sap:value-list="fixed-values"/>
+                <Property Name="ZSUCURS1_T" Type="Edm.String" MaxLength="20" sap:label="Sucursales" sap:quickinfo="Sucursales Texto"/>
+                <Property Name="ZREGIONAL" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZREGIONAL_T" sap:label="Regional" sap:value-list="fixed-values"/>
+                <Property Name="ZREGIONAL_T" Type="Edm.String" MaxLength="20" sap:label="Regional" sap:quickinfo="Descripción breve"/>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Sector" sap:value-list="fixed-values"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Area" sap:quickinfo="Area Texto"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:value-list="standard"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Posición"/>
+                <Property Name="JORNADA" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Jornada"/>
+                <Property Name="ANTIGUEDAD" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="dimension" sap:label="Antigüedad"/>
+                <Property Name="ANTIGUEDAD_TOTAL" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Antigüedad Total" sap:filterable="false"/>
+                <Property Name="ANTIGUEDAD_RANGO" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Antigüedad Rango"/>
+                <Property Name="GENERO" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Género"/>
+                <Property Name="ZCONT_ACTU" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Actual" sap:filterable="false"/>
+                <Property Name="ZCONT_MMAA" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Anterior" sap:filterable="false"/>
+                <Property Name="COSTCENTER" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_area" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A" FromRole="FromRole_assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A" ToRole="ToRole_assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A"/>
+                <NavigationProperty Name="to_gerente" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_0FC24AB1907C1AD09F8C35A1C927DA5D" FromRole="FromRole_assoc_0FC24AB1907C1AD09F8C35A1C927DA5D" ToRole="ToRole_assoc_0FC24AB1907C1AD09F8C35A1C927DA5D"/>
+                <NavigationProperty Name="to_post_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_E09488046D664AAF9B54DE9A2D3D948F" FromRole="FromRole_assoc_E09488046D664AAF9B54DE9A2D3D948F" ToRole="ToRole_assoc_E09488046D664AAF9B54DE9A2D3D948F"/>
+                <NavigationProperty Name="to_sucursal" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_0BB44756F22ED7F4AA633BE05FE2310D" FromRole="FromRole_assoc_0BB44756F22ED7F4AA633BE05FE2310D" ToRole="ToRole_assoc_0BB44756F22ED7F4AA633BE05FE2310D"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_996E5EAA36D35E2122EA67D92D71473D" FromRole="ToRole_assoc_996E5EAA36D35E2122EA67D92D71473D" ToRole="FromRole_assoc_996E5EAA36D35E2122EA67D92D71473D" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCDS_C_NOMINA_SECSUCParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_FMES"/>
+                </Key>
+                <Property Name="P_FMES" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_996E5EAA36D35E2122EA67D92D71473D" FromRole="FromRole_assoc_996E5EAA36D35E2122EA67D92D71473D" ToRole="ToRole_assoc_996E5EAA36D35E2122EA67D92D71473D"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_BASEResult" sap:semantics="aggregate" sap:label="CDS nómina base 200" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZCALMONTH" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZSUCURS1_T" sap:label="Sucursales" sap:value-list="fixed-values"/>
+                <Property Name="ZSUCURS1_T" Type="Edm.String" MaxLength="20" sap:label="Sucursales" sap:quickinfo="Sucursales Texto"/>
+                <Property Name="ZREGIONAL" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZREGIONAL_T" sap:label="Regional" sap:value-list="fixed-values"/>
+                <Property Name="ZREGIONAL_T" Type="Edm.String" MaxLength="20" sap:label="Regional" sap:quickinfo="Descripción breve"/>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Sector" sap:value-list="fixed-values"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Area" sap:quickinfo="Area Texto"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:value-list="standard"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Posición"/>
+                <Property Name="GENERO" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Género"/>
+                <Property Name="JORNADA" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Jornada"/>
+                <Property Name="ANTIGUEDAD" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="dimension" sap:label="Antigüedad"/>
+                <Property Name="ANTIGUEDAD_TOTAL" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Antigüedad Total" sap:filterable="false"/>
+                <Property Name="ANTIGUEDAD_RANGO" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Antigüedad Rango"/>
+                <Property Name="ZCONT_ACTU" Type="Edm.Decimal" Precision="18" Scale="1" sap:aggregation-role="measure" sap:label="Año Actual" sap:filterable="false"/>
+                <Property Name="ZCONT_MMAA" Type="Edm.Decimal" Precision="18" Scale="1" sap:aggregation-role="measure" sap:label="Año Anterior" sap:filterable="false"/>
+                <Property Name="COSTCENTER" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_area" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_8F43D9B445783CE24B80AF47A5053BE1" FromRole="FromRole_assoc_8F43D9B445783CE24B80AF47A5053BE1" ToRole="ToRole_assoc_8F43D9B445783CE24B80AF47A5053BE1"/>
+                <NavigationProperty Name="to_gerente" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_AE18E5DAF01297C466E8BBA562EF55DA" FromRole="FromRole_assoc_AE18E5DAF01297C466E8BBA562EF55DA" ToRole="ToRole_assoc_AE18E5DAF01297C466E8BBA562EF55DA"/>
+                <NavigationProperty Name="to_post_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_A86250A9165C8274DB65C431C032B14C" FromRole="FromRole_assoc_A86250A9165C8274DB65C431C032B14C" ToRole="ToRole_assoc_A86250A9165C8274DB65C431C032B14C"/>
+                <NavigationProperty Name="to_sucursal" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_48E262D63C94DC8344E8E9AC05C362E4" FromRole="FromRole_assoc_48E262D63C94DC8344E8E9AC05C362E4" ToRole="ToRole_assoc_48E262D63C94DC8344E8E9AC05C362E4"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_AE96A5D1EA2E471279C7E590241A7406" FromRole="ToRole_assoc_AE96A5D1EA2E471279C7E590241A7406" ToRole="FromRole_assoc_AE96A5D1EA2E471279C7E590241A7406" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_BASEParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_FMES"/>
+                </Key>
+                <Property Name="P_FMES" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_AE96A5D1EA2E471279C7E590241A7406" FromRole="FromRole_assoc_AE96A5D1EA2E471279C7E590241A7406" ToRole="ToRole_assoc_AE96A5D1EA2E471279C7E590241A7406"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_CABEZAS_TABResult" sap:semantics="aggregate" sap:label="CDS nomina cabezas tabla" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZCALMONTH" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZSUCURS1_T" sap:label="Sucursales" sap:value-list="fixed-values"/>
+                <Property Name="ZSUCURS1_T" Type="Edm.String" MaxLength="20" sap:label="Sucursales" sap:quickinfo="Sucursales Texto"/>
+                <Property Name="ZREGIONAL" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZREGIONAL_T" sap:label="Regional" sap:value-list="fixed-values"/>
+                <Property Name="ZREGIONAL_T" Type="Edm.String" MaxLength="20" sap:label="Regional" sap:quickinfo="Descripción breve"/>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Sector" sap:value-list="fixed-values"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Area" sap:quickinfo="Area Texto"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:value-list="standard"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Posición"/>
+                <Property Name="GENERO" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Género"/>
+                <Property Name="ANTIGUEDAD" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="dimension" sap:label="Antigüedad"/>
+                <Property Name="ANTIGUEDAD_TOTAL" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Antigüedad Total" sap:filterable="false"/>
+                <Property Name="ANTIGUEDAD_RANGO" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Antigüedad Rango"/>
+                <Property Name="ZCONT_ACTU" Type="Edm.Decimal" Precision="17" Scale="1" sap:aggregation-role="measure" sap:label="Año Actual" sap:filterable="false"/>
+                <Property Name="ZCONT_MMAA" Type="Edm.Decimal" Precision="17" Scale="1" sap:aggregation-role="measure" sap:label="Año Anterior" sap:filterable="false"/>
+                <Property Name="COSTCENTER" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_area" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_5B754A375B9232B2BC73D200E026DB6F" FromRole="FromRole_assoc_5B754A375B9232B2BC73D200E026DB6F" ToRole="ToRole_assoc_5B754A375B9232B2BC73D200E026DB6F"/>
+                <NavigationProperty Name="to_gerente" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_C4B621B1C08BA9D22FA7F214B1F1211B" FromRole="FromRole_assoc_C4B621B1C08BA9D22FA7F214B1F1211B" ToRole="ToRole_assoc_C4B621B1C08BA9D22FA7F214B1F1211B"/>
+                <NavigationProperty Name="to_post_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_C410D8C93625BB0362D225F245DF7D17" FromRole="FromRole_assoc_C410D8C93625BB0362D225F245DF7D17" ToRole="ToRole_assoc_C410D8C93625BB0362D225F245DF7D17"/>
+                <NavigationProperty Name="to_sucursal" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_3CD0F2F6AB3A443E5EF278FB22059449" FromRole="FromRole_assoc_3CD0F2F6AB3A443E5EF278FB22059449" ToRole="ToRole_assoc_3CD0F2F6AB3A443E5EF278FB22059449"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_CAD41164E904AA374237BFA1D3139E22" FromRole="ToRole_assoc_CAD41164E904AA374237BFA1D3139E22" ToRole="FromRole_assoc_CAD41164E904AA374237BFA1D3139E22" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_CABEZAS_TABParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_FMES"/>
+                </Key>
+                <Property Name="P_FMES" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_CAD41164E904AA374237BFA1D3139E22" FromRole="FromRole_assoc_CAD41164E904AA374237BFA1D3139E22" ToRole="ToRole_assoc_CAD41164E904AA374237BFA1D3139E22"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_EVOLCCResult" sap:semantics="aggregate" sap:label="CDS Evolutivo Casa Central Chart" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZSUCURS1_T" sap:label="Sucursal" sap:value-list="fixed-values"/>
+                <Property Name="ZSUCURS1_T" Type="Edm.String" MaxLength="20" sap:label="Sucursal" sap:quickinfo="Sucursal Texto"/>
+                <Property Name="ZREGIONAL" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZREGIONAL_T" sap:label="Regional" sap:value-list="fixed-values"/>
+                <Property Name="ZREGIONAL_T" Type="Edm.String" MaxLength="20" sap:label="Regional" sap:quickinfo="Regional Texto"/>
+                <Property Name="ZDIRECCION" Type="Edm.String" MaxLength="50" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZDIRECCION_T" sap:label="Dirección" sap:value-list="fixed-values"/>
+                <Property Name="ZDIRECCION_T" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:text="ZDIRECCION_T" sap:label="Dirección" sap:quickinfo="Dirección Texto"/>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Sector" sap:value-list="fixed-values"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Area" sap:quickinfo="Area Texto"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:value-list="standard"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Posición"/>
+                <Property Name="GENERO" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Género"/>
+                <Property Name="ANTIGUEDAD" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="dimension" sap:label="Antigüedad"/>
+                <Property Name="ANTIGUEDAD_RANGO" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Antiguedad Rango"/>
+                <Property Name="ANTIGUEDAD_TOTAL" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Antigüedad" sap:filterable="false"/>
+                <Property Name="ZCONT_ACTU" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Actual" sap:filterable="false"/>
+                <Property Name="ZCONT_MMAA" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Anterior" sap:filterable="false"/>
+                <Property Name="PROG_MMAA" Type="Edm.Decimal" Precision="17" Scale="2" sap:aggregation-role="measure" sap:unit="P32893CEB3C9E9719D65C63629E2F11DC" sap:label="% Prog MMAA" sap:filterable="false"/>
+                <Property Name="ZJORNADA" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Jornada"/>
+                <Property Name="ZCALMONTH" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="YEAR_F" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="MES_F" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="CUARTOS" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="ZCOSTCENTER" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_area" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_FBC7A1F15CC943B329D8414B21D7AFCF" FromRole="FromRole_assoc_FBC7A1F15CC943B329D8414B21D7AFCF" ToRole="ToRole_assoc_FBC7A1F15CC943B329D8414B21D7AFCF"/>
+                <NavigationProperty Name="to_dire" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_5FF9360E353A867B706C23D3B3E578FA" FromRole="FromRole_assoc_5FF9360E353A867B706C23D3B3E578FA" ToRole="ToRole_assoc_5FF9360E353A867B706C23D3B3E578FA"/>
+                <NavigationProperty Name="to_gerente" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0" FromRole="FromRole_assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0" ToRole="ToRole_assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0"/>
+                <NavigationProperty Name="to_post_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_77C10C353F17C6050A633D064E849929" FromRole="FromRole_assoc_77C10C353F17C6050A633D064E849929" ToRole="ToRole_assoc_77C10C353F17C6050A633D064E849929"/>
+                <NavigationProperty Name="to_sucursal" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_BAB1C54C80858A29D04A0F72B92C2C91" FromRole="FromRole_assoc_BAB1C54C80858A29D04A0F72B92C2C91" ToRole="ToRole_assoc_BAB1C54C80858A29D04A0F72B92C2C91"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_2BF8D718C6A62F34323460F38136596D" FromRole="ToRole_assoc_2BF8D718C6A62F34323460F38136596D" ToRole="FromRole_assoc_2BF8D718C6A62F34323460F38136596D" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_EVOLCCParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_DESDE"/>
+                    <PropertyRef Name="P_HASTA"/>
+                </Key>
+                <Property Name="P_DESDE" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_HASTA" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_2BF8D718C6A62F34323460F38136596D" FromRole="FromRole_assoc_2BF8D718C6A62F34323460F38136596D" ToRole="ToRole_assoc_2BF8D718C6A62F34323460F38136596D"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_EVOLCC_TABResult" sap:semantics="aggregate" sap:label="CDS nomina evolutivo Tab" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZSUCURS1_T" sap:label="Sucursal" sap:value-list="fixed-values"/>
+                <Property Name="ZSUCURS1_T" Type="Edm.String" MaxLength="20" sap:label="Sucursal" sap:quickinfo="Sucursal Texto"/>
+                <Property Name="ZREGIONAL" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZREGIONAL_T" sap:label="Regional" sap:value-list="fixed-values"/>
+                <Property Name="ZREGIONAL_T" Type="Edm.String" MaxLength="20" sap:label="Regional" sap:quickinfo="Regional Texto"/>
+                <Property Name="ZDIRECCION" Type="Edm.String" MaxLength="50" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZDIRECCION_T" sap:label="Dirección" sap:value-list="fixed-values"/>
+                <Property Name="ZDIRECCION_T" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:text="ZDIRECCION_T" sap:label="Dirección" sap:quickinfo="Dirección Texto"/>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Sector" sap:value-list="fixed-values"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Area" sap:quickinfo="Area Texto"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:value-list="standard"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Posición"/>
+                <Property Name="GENERO" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Género"/>
+                <Property Name="ANTIGUEDAD" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="dimension" sap:label="Antigüedad"/>
+                <Property Name="ANTIGUEDAD_RANGO" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Antiguedad Rango"/>
+                <Property Name="ANTIGUEDAD_TOTAL" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Antigüedad" sap:filterable="false"/>
+                <Property Name="ZCONT_ACTU" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Actual" sap:filterable="false"/>
+                <Property Name="ZCONT_MMAA" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Anterior" sap:filterable="false"/>
+                <Property Name="ZJORNADA" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Jornada"/>
+                <Property Name="ZCALMONTH" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="YEAR_F" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="MES_F" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="CUARTOS" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="ZCOSTCENTER" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_area" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_84DCFFFD48073C48316F50FA7BD637F4" FromRole="FromRole_assoc_84DCFFFD48073C48316F50FA7BD637F4" ToRole="ToRole_assoc_84DCFFFD48073C48316F50FA7BD637F4"/>
+                <NavigationProperty Name="to_dire" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF" FromRole="FromRole_assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF" ToRole="ToRole_assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF"/>
+                <NavigationProperty Name="to_gerente" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_74934FA9809E48EEE18C33498FE0507D" FromRole="FromRole_assoc_74934FA9809E48EEE18C33498FE0507D" ToRole="ToRole_assoc_74934FA9809E48EEE18C33498FE0507D"/>
+                <NavigationProperty Name="to_post_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_89053415DA7728D48C997C0514FFBF87" FromRole="FromRole_assoc_89053415DA7728D48C997C0514FFBF87" ToRole="ToRole_assoc_89053415DA7728D48C997C0514FFBF87"/>
+                <NavigationProperty Name="to_sucursal" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_21A9087A8AEB809F6D99E47941B354A7" FromRole="FromRole_assoc_21A9087A8AEB809F6D99E47941B354A7" ToRole="ToRole_assoc_21A9087A8AEB809F6D99E47941B354A7"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_35834431E93ED565349EDB4E7BBF9BBE" FromRole="ToRole_assoc_35834431E93ED565349EDB4E7BBF9BBE" ToRole="FromRole_assoc_35834431E93ED565349EDB4E7BBF9BBE" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_EVOLCC_TABParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_DESDE"/>
+                    <PropertyRef Name="P_HASTA"/>
+                </Key>
+                <Property Name="P_DESDE" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_HASTA" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_35834431E93ED565349EDB4E7BBF9BBE" FromRole="FromRole_assoc_35834431E93ED565349EDB4E7BBF9BBE" ToRole="ToRole_assoc_35834431E93ED565349EDB4E7BBF9BBE"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_EVOLUTIVOResult" sap:semantics="aggregate" sap:label="CDS nomina evolutivo chart" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZSUCURS1_T" sap:label="Sucursal" sap:value-list="fixed-values"/>
+                <Property Name="ZSUCURS1_T" Type="Edm.String" MaxLength="20" sap:label="Sucursal" sap:quickinfo="Sucursal Texto"/>
+                <Property Name="ZREGIONAL" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZREGIONAL_T" sap:label="Regional" sap:value-list="fixed-values"/>
+                <Property Name="ZREGIONAL_T" Type="Edm.String" MaxLength="20" sap:label="Regional" sap:quickinfo="Regional Texto"/>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Sector" sap:value-list="fixed-values"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Area" sap:quickinfo="Area Texto"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:value-list="standard"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Posición"/>
+                <Property Name="ANTIGUEDAD" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="dimension" sap:label="Antigüedad"/>
+                <Property Name="ANTIGUEDAD_RANGO" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Antiguedad Rango"/>
+                <Property Name="ANTIGUEDAD_TOTAL" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Antigüedad" sap:filterable="false"/>
+                <Property Name="GENERO" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Género"/>
+                <Property Name="ZCONT_ACTU" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Actual" sap:filterable="false"/>
+                <Property Name="ZCONT_MMAA" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Anterior" sap:filterable="false"/>
+                <Property Name="PROG_MMAA" Type="Edm.Decimal" Precision="17" Scale="2" sap:aggregation-role="measure" sap:unit="P5E356A254F38702537708D9C1625CA51" sap:label="% Prog MMAA" sap:filterable="false"/>
+                <Property Name="ZJORNADA" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Jornada"/>
+                <Property Name="ZCOSTCENTER" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="ZCALMONTH" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="YEAR_F" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="MES_F" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="CUARTOS" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_area" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_97A725DE0FBD68B1F09AAEDBA810E025" FromRole="FromRole_assoc_97A725DE0FBD68B1F09AAEDBA810E025" ToRole="ToRole_assoc_97A725DE0FBD68B1F09AAEDBA810E025"/>
+                <NavigationProperty Name="to_gerente" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_06A1964F2030327ACBF91917244123D1" FromRole="FromRole_assoc_06A1964F2030327ACBF91917244123D1" ToRole="ToRole_assoc_06A1964F2030327ACBF91917244123D1"/>
+                <NavigationProperty Name="to_post_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_BFAE48E5AE51F80A4A2C9740EC14F13D" FromRole="FromRole_assoc_BFAE48E5AE51F80A4A2C9740EC14F13D" ToRole="ToRole_assoc_BFAE48E5AE51F80A4A2C9740EC14F13D"/>
+                <NavigationProperty Name="to_sucursal" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_FF0CE509D69BE6C4A60D8AFC4C115E36" FromRole="FromRole_assoc_FF0CE509D69BE6C4A60D8AFC4C115E36" ToRole="ToRole_assoc_FF0CE509D69BE6C4A60D8AFC4C115E36"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_85E423D8BBB9E66C64692C22EEAED058" FromRole="ToRole_assoc_85E423D8BBB9E66C64692C22EEAED058" ToRole="FromRole_assoc_85E423D8BBB9E66C64692C22EEAED058" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_EVOLUTIVOParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_DESDE"/>
+                    <PropertyRef Name="P_HASTA"/>
+                </Key>
+                <Property Name="P_DESDE" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_HASTA" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_85E423D8BBB9E66C64692C22EEAED058" FromRole="FromRole_assoc_85E423D8BBB9E66C64692C22EEAED058" ToRole="ToRole_assoc_85E423D8BBB9E66C64692C22EEAED058"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_EVOL_TABResult" sap:semantics="aggregate" sap:label="CDS nomina evolutivo tabla" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZSUCURS1_T" sap:label="Sucursal" sap:value-list="fixed-values"/>
+                <Property Name="ZSUCURS1_T" Type="Edm.String" MaxLength="20" sap:label="Sucursal" sap:quickinfo="Sucursal Texto"/>
+                <Property Name="ZREGIONAL" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZREGIONAL_T" sap:label="Regional" sap:value-list="fixed-values"/>
+                <Property Name="ZREGIONAL_T" Type="Edm.String" MaxLength="20" sap:label="Regional" sap:quickinfo="Regional Texto"/>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Sector" sap:value-list="fixed-values"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Area" sap:quickinfo="Area Texto"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:value-list="standard"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Posición"/>
+                <Property Name="GENERO" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Género"/>
+                <Property Name="ANTIGUEDAD" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="dimension" sap:label="Antigüedad"/>
+                <Property Name="ANTIGUEDAD_RANGO" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Antiguedad Rango"/>
+                <Property Name="ANTIGUEDAD_TOTAL" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Antigüedad" sap:filterable="false"/>
+                <Property Name="ZCONT_ACTU" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Actual" sap:filterable="false"/>
+                <Property Name="ZCONT_MMAA" Type="Edm.Decimal" Precision="17" Scale="0" sap:aggregation-role="measure" sap:label="Año Anterior" sap:filterable="false"/>
+                <Property Name="ZJORNADA" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Jornada"/>
+                <Property Name="ZCOSTCENTER" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="ZCALMONTH" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="YEAR_F" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="MES_F" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <Property Name="CUARTOS" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_area" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_49E2CAF8AAF04007556B21E329DA700B" FromRole="FromRole_assoc_49E2CAF8AAF04007556B21E329DA700B" ToRole="ToRole_assoc_49E2CAF8AAF04007556B21E329DA700B"/>
+                <NavigationProperty Name="to_gerente" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_868D226BB7E53A679635209E46044DCB" FromRole="FromRole_assoc_868D226BB7E53A679635209E46044DCB" ToRole="ToRole_assoc_868D226BB7E53A679635209E46044DCB"/>
+                <NavigationProperty Name="to_post_empleado" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_C997FB7CAD1FFDB6510B274011B22BCF" FromRole="FromRole_assoc_C997FB7CAD1FFDB6510B274011B22BCF" ToRole="ToRole_assoc_C997FB7CAD1FFDB6510B274011B22BCF"/>
+                <NavigationProperty Name="to_sucursal" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_839C961194C4BC83894D3FE821BC6E29" FromRole="FromRole_assoc_839C961194C4BC83894D3FE821BC6E29" ToRole="ToRole_assoc_839C961194C4BC83894D3FE821BC6E29"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15" FromRole="ToRole_assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15" ToRole="FromRole_assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_NOMINA_EVOL_TABParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_DESDE"/>
+                    <PropertyRef Name="P_HASTA"/>
+                </Key>
+                <Property Name="P_DESDE" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_HASTA" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15" FromRole="FromRole_assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15" ToRole="ToRole_assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15"/>
+            </EntityType>
+            <EntityType Name="ZVH_AREA_HXType" sap:label="Value Help Horas extra para Area" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZCOCEUNIF"/>
+                </Key>
+                <Property Name="ZCOCEUNIF" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="ZCOCEUNIF_T" sap:label="Area"/>
+                <Property Name="ZCOCEUNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase"/>
+            </EntityType>
+            <EntityType Name="ZVH_DIR_NOMINType" sap:label="Value Help Dirección Nomina" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZDIRECCION_T"/>
+                </Key>
+                <Property Name="ZDIRECCION_T" Type="Edm.String" Nullable="false" MaxLength="50" sap:display-format="UpperCase" sap:text="ZDIRECCION_T" sap:label="Dirección"/>
+            </EntityType>
+            <EntityType Name="ZVH_EMPLEADOType" sap:label="Value Help para Empleados" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZEMPLOYEE"/>
+                </Key>
+                <Property Name="ZEMPLOYEE" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="ZEMPLOYEE_T" sap:label="Empleado" sap:quickinfo="Empleados"/>
+                <Property Name="ZEMPLOYEE_T" Type="Edm.String" MaxLength="40" sap:label="Descripción" sap:quickinfo="Descripción media"/>
+            </EntityType>
+            <EntityType Name="ZVH_EMPLEADO_NEWType" sap:label="Value Help para Empleados" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_FMES"/>
+                    <PropertyRef Name="ZEMPLOYEE"/>
+                </Key>
+                <Property Name="P_FMES" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Reserva"/>
+                <Property Name="ZEMPLOYEE" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:text="ZEMPLOYEE_T" sap:label="Empleado"/>
+                <Property Name="ZEMPLOYEE_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Descripción"/>
+                <Property Name="ZSUCURS1" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase"/>
+                <Property Name="COSTCENTER" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase"/>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="Parameters" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_006E9F3EBEF73E2A03546D6206D4E7FE" FromRole="ToRole_assoc_006E9F3EBEF73E2A03546D6206D4E7FE" ToRole="FromRole_assoc_006E9F3EBEF73E2A03546D6206D4E7FE" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZVH_EMPLEADO_NEWParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_FMES"/>
+                </Key>
+                <Property Name="P_FMES" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZGW_TABLERO_NOMINA_SRV.assoc_006E9F3EBEF73E2A03546D6206D4E7FE" FromRole="FromRole_assoc_006E9F3EBEF73E2A03546D6206D4E7FE" ToRole="ToRole_assoc_006E9F3EBEF73E2A03546D6206D4E7FE"/>
+            </EntityType>
+            <EntityType Name="ZVH_POS_EMPLEADO_HXType" sap:label="Value Help Horas extra para Posicion Empleado" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZPOS_UNIF"/>
+                </Key>
+                <Property Name="ZPOS_UNIF" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="ZPOS_UNIF_T" sap:label="Posición" sap:quickinfo="Campo de texto de longitud 5"/>
+                <Property Name="ZPOS_UNIF_T" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Descripción" sap:quickinfo="Character field of length 40"/>
+            </EntityType>
+            <EntityType Name="ZVH_REGIONALType" sap:label="Value help for Regional" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Regional"/>
+                    <PropertyRef Name="langu"/>
+                </Key>
+                <Property Name="Regional" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:text="Regional_t" sap:label="Por Regional" sap:quickinfo="Gerente Regional"/>
+                <Property Name="langu" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Clave de idioma"/>
+                <Property Name="Regional_t" Type="Edm.String" MaxLength="20" sap:label="Descripción breve"/>
+                <Property Name="FILTRO" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase"/>
+            </EntityType>
+            <EntityType Name="ZVH_SUCURSAL_CCType" sap:label="Value Help para casa central" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sucursal"/>
+                </Key>
+                <Property Name="Sucursal" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="Sucursal_t" sap:label="Por Sucursal" sap:quickinfo="Sucursal"/>
+                <Property Name="Sucursal_t" Type="Edm.String" MaxLength="20" sap:label="Descripción breve"/>
+                <Property Name="Regional" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Gerente Regional"/>
+            </EntityType>
+            <EntityType Name="ZVH_SUCURSAL_DIF_INVType" sap:label="Value help para Sucursal en Dif. de Inv." sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sucursal"/>
+                </Key>
+                <Property Name="Sucursal" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="Sucursal_t" sap:label="Por Sucursal" sap:quickinfo="Sucursal"/>
+                <Property Name="Sucursal_t" Type="Edm.String" MaxLength="20" sap:label="Descripción breve"/>
+                <Property Name="Regional" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Gerente Regional"/>
+            </EntityType>
+            <EntityType Name="ZVH_SUCURSAL_NCCType" sap:label="Value Help para sucursal nom. c.central" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sucursal"/>
+                </Key>
+                <Property Name="Sucursal" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="Sucursal_t" sap:label="Por Sucursal" sap:quickinfo="Sucursal"/>
+                <Property Name="Sucursal_t" Type="Edm.String" MaxLength="20" sap:label="Descripción breve"/>
+                <Property Name="Regional" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Gerente Regional"/>
+            </EntityType>
+            <Association Name="assoc_8F43D9B445783CE24B80AF47A5053BE1" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult" Multiplicity="1" Role="FromRole_assoc_8F43D9B445783CE24B80AF47A5053BE1"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" Multiplicity="1" Role="ToRole_assoc_8F43D9B445783CE24B80AF47A5053BE1"/>
+            </Association>
+            <Association Name="assoc_AE18E5DAF01297C466E8BBA562EF55DA" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult" Multiplicity="1" Role="FromRole_assoc_AE18E5DAF01297C466E8BBA562EF55DA"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" Multiplicity="1" Role="ToRole_assoc_AE18E5DAF01297C466E8BBA562EF55DA"/>
+            </Association>
+            <Association Name="assoc_A86250A9165C8274DB65C431C032B14C" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult" Multiplicity="1" Role="FromRole_assoc_A86250A9165C8274DB65C431C032B14C"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" Multiplicity="1" Role="ToRole_assoc_A86250A9165C8274DB65C431C032B14C"/>
+            </Association>
+            <Association Name="assoc_48E262D63C94DC8344E8E9AC05C362E4" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult" Multiplicity="1" Role="FromRole_assoc_48E262D63C94DC8344E8E9AC05C362E4"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_DIF_INVType" Multiplicity="1" Role="ToRole_assoc_48E262D63C94DC8344E8E9AC05C362E4"/>
+            </Association>
+            <Association Name="assoc_CAD41164E904AA374237BFA1D3139E22" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABParameters" Multiplicity="1" Role="FromRole_assoc_CAD41164E904AA374237BFA1D3139E22"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult" Multiplicity="*" Role="ToRole_assoc_CAD41164E904AA374237BFA1D3139E22"/>
+            </Association>
+            <Association Name="assoc_84DCFFFD48073C48316F50FA7BD637F4" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult" Multiplicity="1" Role="FromRole_assoc_84DCFFFD48073C48316F50FA7BD637F4"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" Multiplicity="1" Role="ToRole_assoc_84DCFFFD48073C48316F50FA7BD637F4"/>
+            </Association>
+            <Association Name="assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult" Multiplicity="1" Role="FromRole_assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_DIR_NOMINType" Multiplicity="1" Role="ToRole_assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF"/>
+            </Association>
+            <Association Name="assoc_74934FA9809E48EEE18C33498FE0507D" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult" Multiplicity="1" Role="FromRole_assoc_74934FA9809E48EEE18C33498FE0507D"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" Multiplicity="1" Role="ToRole_assoc_74934FA9809E48EEE18C33498FE0507D"/>
+            </Association>
+            <Association Name="assoc_89053415DA7728D48C997C0514FFBF87" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult" Multiplicity="1" Role="FromRole_assoc_89053415DA7728D48C997C0514FFBF87"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" Multiplicity="1" Role="ToRole_assoc_89053415DA7728D48C997C0514FFBF87"/>
+            </Association>
+            <Association Name="assoc_21A9087A8AEB809F6D99E47941B354A7" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult" Multiplicity="1" Role="FromRole_assoc_21A9087A8AEB809F6D99E47941B354A7"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_CCType" Multiplicity="1" Role="ToRole_assoc_21A9087A8AEB809F6D99E47941B354A7"/>
+            </Association>
+            <Association Name="assoc_AE96A5D1EA2E471279C7E590241A7406" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEParameters" Multiplicity="1" Role="FromRole_assoc_AE96A5D1EA2E471279C7E590241A7406"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult" Multiplicity="*" Role="ToRole_assoc_AE96A5D1EA2E471279C7E590241A7406"/>
+            </Association>
+            <Association Name="assoc_2FD884B33C7F999BC9792382D7A0E302" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAParameters" Multiplicity="1" Role="FromRole_assoc_2FD884B33C7F999BC9792382D7A0E302"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult" Multiplicity="*" Role="ToRole_assoc_2FD884B33C7F999BC9792382D7A0E302"/>
+            </Association>
+            <Association Name="assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABParameters" Multiplicity="1" Role="FromRole_assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult" Multiplicity="*" Role="ToRole_assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15"/>
+            </Association>
+            <Association Name="assoc_996E5EAA36D35E2122EA67D92D71473D" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCParameters" Multiplicity="1" Role="FromRole_assoc_996E5EAA36D35E2122EA67D92D71473D"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult" Multiplicity="*" Role="ToRole_assoc_996E5EAA36D35E2122EA67D92D71473D"/>
+            </Association>
+            <Association Name="assoc_35834431E93ED565349EDB4E7BBF9BBE" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABParameters" Multiplicity="1" Role="FromRole_assoc_35834431E93ED565349EDB4E7BBF9BBE"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult" Multiplicity="*" Role="ToRole_assoc_35834431E93ED565349EDB4E7BBF9BBE"/>
+            </Association>
+            <Association Name="assoc_5B754A375B9232B2BC73D200E026DB6F" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult" Multiplicity="1" Role="FromRole_assoc_5B754A375B9232B2BC73D200E026DB6F"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" Multiplicity="1" Role="ToRole_assoc_5B754A375B9232B2BC73D200E026DB6F"/>
+            </Association>
+            <Association Name="assoc_C4B621B1C08BA9D22FA7F214B1F1211B" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult" Multiplicity="1" Role="FromRole_assoc_C4B621B1C08BA9D22FA7F214B1F1211B"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" Multiplicity="1" Role="ToRole_assoc_C4B621B1C08BA9D22FA7F214B1F1211B"/>
+            </Association>
+            <Association Name="assoc_C410D8C93625BB0362D225F245DF7D17" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult" Multiplicity="1" Role="FromRole_assoc_C410D8C93625BB0362D225F245DF7D17"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" Multiplicity="1" Role="ToRole_assoc_C410D8C93625BB0362D225F245DF7D17"/>
+            </Association>
+            <Association Name="assoc_3CD0F2F6AB3A443E5EF278FB22059449" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult" Multiplicity="1" Role="FromRole_assoc_3CD0F2F6AB3A443E5EF278FB22059449"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_DIF_INVType" Multiplicity="1" Role="ToRole_assoc_3CD0F2F6AB3A443E5EF278FB22059449"/>
+            </Association>
+            <Association Name="assoc_006E9F3EBEF73E2A03546D6206D4E7FE" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADO_NEWParameters" Multiplicity="1" Role="FromRole_assoc_006E9F3EBEF73E2A03546D6206D4E7FE"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADO_NEWType" Multiplicity="*" Role="ToRole_assoc_006E9F3EBEF73E2A03546D6206D4E7FE"/>
+            </Association>
+            <Association Name="assoc_FBC7A1F15CC943B329D8414B21D7AFCF" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult" Multiplicity="1" Role="FromRole_assoc_FBC7A1F15CC943B329D8414B21D7AFCF"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" Multiplicity="1" Role="ToRole_assoc_FBC7A1F15CC943B329D8414B21D7AFCF"/>
+            </Association>
+            <Association Name="assoc_5FF9360E353A867B706C23D3B3E578FA" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult" Multiplicity="1" Role="FromRole_assoc_5FF9360E353A867B706C23D3B3E578FA"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_DIR_NOMINType" Multiplicity="1" Role="ToRole_assoc_5FF9360E353A867B706C23D3B3E578FA"/>
+            </Association>
+            <Association Name="assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult" Multiplicity="1" Role="FromRole_assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" Multiplicity="1" Role="ToRole_assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0"/>
+            </Association>
+            <Association Name="assoc_77C10C353F17C6050A633D064E849929" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult" Multiplicity="1" Role="FromRole_assoc_77C10C353F17C6050A633D064E849929"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" Multiplicity="1" Role="ToRole_assoc_77C10C353F17C6050A633D064E849929"/>
+            </Association>
+            <Association Name="assoc_BAB1C54C80858A29D04A0F72B92C2C91" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult" Multiplicity="1" Role="FromRole_assoc_BAB1C54C80858A29D04A0F72B92C2C91"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_CCType" Multiplicity="1" Role="ToRole_assoc_BAB1C54C80858A29D04A0F72B92C2C91"/>
+            </Association>
+            <Association Name="assoc_49E2CAF8AAF04007556B21E329DA700B" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult" Multiplicity="1" Role="FromRole_assoc_49E2CAF8AAF04007556B21E329DA700B"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" Multiplicity="1" Role="ToRole_assoc_49E2CAF8AAF04007556B21E329DA700B"/>
+            </Association>
+            <Association Name="assoc_868D226BB7E53A679635209E46044DCB" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult" Multiplicity="1" Role="FromRole_assoc_868D226BB7E53A679635209E46044DCB"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" Multiplicity="1" Role="ToRole_assoc_868D226BB7E53A679635209E46044DCB"/>
+            </Association>
+            <Association Name="assoc_C997FB7CAD1FFDB6510B274011B22BCF" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult" Multiplicity="1" Role="FromRole_assoc_C997FB7CAD1FFDB6510B274011B22BCF"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" Multiplicity="1" Role="ToRole_assoc_C997FB7CAD1FFDB6510B274011B22BCF"/>
+            </Association>
+            <Association Name="assoc_839C961194C4BC83894D3FE821BC6E29" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult" Multiplicity="1" Role="FromRole_assoc_839C961194C4BC83894D3FE821BC6E29"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_DIF_INVType" Multiplicity="1" Role="ToRole_assoc_839C961194C4BC83894D3FE821BC6E29"/>
+            </Association>
+            <Association Name="assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult" Multiplicity="1" Role="FromRole_assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" Multiplicity="1" Role="ToRole_assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A"/>
+            </Association>
+            <Association Name="assoc_0FC24AB1907C1AD09F8C35A1C927DA5D" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult" Multiplicity="1" Role="FromRole_assoc_0FC24AB1907C1AD09F8C35A1C927DA5D"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" Multiplicity="1" Role="ToRole_assoc_0FC24AB1907C1AD09F8C35A1C927DA5D"/>
+            </Association>
+            <Association Name="assoc_E09488046D664AAF9B54DE9A2D3D948F" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult" Multiplicity="1" Role="FromRole_assoc_E09488046D664AAF9B54DE9A2D3D948F"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" Multiplicity="1" Role="ToRole_assoc_E09488046D664AAF9B54DE9A2D3D948F"/>
+            </Association>
+            <Association Name="assoc_0BB44756F22ED7F4AA633BE05FE2310D" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult" Multiplicity="1" Role="FromRole_assoc_0BB44756F22ED7F4AA633BE05FE2310D"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_DIF_INVType" Multiplicity="1" Role="ToRole_assoc_0BB44756F22ED7F4AA633BE05FE2310D"/>
+            </Association>
+            <Association Name="assoc_B8AF700EEAECD8500CEB4EB20A9E6890" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult" Multiplicity="1" Role="FromRole_assoc_B8AF700EEAECD8500CEB4EB20A9E6890"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADOType" Multiplicity="1" Role="ToRole_assoc_B8AF700EEAECD8500CEB4EB20A9E6890"/>
+            </Association>
+            <Association Name="assoc_6A41D19F39BA15ECC98BA80DF2679B2E" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult" Multiplicity="1" Role="FromRole_assoc_6A41D19F39BA15ECC98BA80DF2679B2E"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" Multiplicity="1" Role="ToRole_assoc_6A41D19F39BA15ECC98BA80DF2679B2E"/>
+            </Association>
+            <Association Name="assoc_53CE91CC4672A519EA7D849E385AE2DD" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult" Multiplicity="1" Role="FromRole_assoc_53CE91CC4672A519EA7D849E385AE2DD"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" Multiplicity="1" Role="ToRole_assoc_53CE91CC4672A519EA7D849E385AE2DD"/>
+            </Association>
+            <Association Name="assoc_6FA1FEB6493FA938BA2D247AF437B8FE" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult" Multiplicity="1" Role="FromRole_assoc_6FA1FEB6493FA938BA2D247AF437B8FE"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_NCCType" Multiplicity="1" Role="ToRole_assoc_6FA1FEB6493FA938BA2D247AF437B8FE"/>
+            </Association>
+            <Association Name="assoc_8E225F2432C12B39B6A771817CC003E4" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult" Multiplicity="1" Role="FromRole_assoc_8E225F2432C12B39B6A771817CC003E4"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" Multiplicity="1" Role="ToRole_assoc_8E225F2432C12B39B6A771817CC003E4"/>
+            </Association>
+            <Association Name="assoc_2BF8D718C6A62F34323460F38136596D" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCParameters" Multiplicity="1" Role="FromRole_assoc_2BF8D718C6A62F34323460F38136596D"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult" Multiplicity="*" Role="ToRole_assoc_2BF8D718C6A62F34323460F38136596D"/>
+            </Association>
+            <Association Name="assoc_97A725DE0FBD68B1F09AAEDBA810E025" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult" Multiplicity="1" Role="FromRole_assoc_97A725DE0FBD68B1F09AAEDBA810E025"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" Multiplicity="1" Role="ToRole_assoc_97A725DE0FBD68B1F09AAEDBA810E025"/>
+            </Association>
+            <Association Name="assoc_06A1964F2030327ACBF91917244123D1" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult" Multiplicity="1" Role="FromRole_assoc_06A1964F2030327ACBF91917244123D1"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" Multiplicity="1" Role="ToRole_assoc_06A1964F2030327ACBF91917244123D1"/>
+            </Association>
+            <Association Name="assoc_BFAE48E5AE51F80A4A2C9740EC14F13D" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult" Multiplicity="1" Role="FromRole_assoc_BFAE48E5AE51F80A4A2C9740EC14F13D"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" Multiplicity="1" Role="ToRole_assoc_BFAE48E5AE51F80A4A2C9740EC14F13D"/>
+            </Association>
+            <Association Name="assoc_FF0CE509D69BE6C4A60D8AFC4C115E36" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult" Multiplicity="1" Role="FromRole_assoc_FF0CE509D69BE6C4A60D8AFC4C115E36"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_DIF_INVType" Multiplicity="1" Role="ToRole_assoc_FF0CE509D69BE6C4A60D8AFC4C115E36"/>
+            </Association>
+            <Association Name="assoc_85E423D8BBB9E66C64692C22EEAED058" sap:content-version="1">
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOParameters" Multiplicity="1" Role="FromRole_assoc_85E423D8BBB9E66C64692C22EEAED058"/>
+                <End Type="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult" Multiplicity="*" Role="ToRole_assoc_85E423D8BBB9E66C64692C22EEAED058"/>
+            </Association>
+            <EntityContainer Name="ZGW_TABLERO_NOMINA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZCDS_C_NOMINA_PERSONAResults" EntityType="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCDS_C_NOMINA_PERSONA" EntityType="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCDS_C_NOMINA_SECSUCResults" EntityType="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCDS_C_NOMINA_SECSUC" EntityType="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_BASEResults" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_BASE" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_CABEZAS_TABResults" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_CABEZAS_TAB" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_EVOLCCResults" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_EVOLCC" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_EVOLCC_TABResults" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_EVOLCC_TAB" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_EVOLUTIVOResults" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_EVOLUTIVO" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_EVOL_TABResults" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_NOMINA_EVOL_TAB" EntityType="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZVH_AREA_HX" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_AREA_HXType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZVH_DIR_NOMIN" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_DIR_NOMINType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZVH_EMPLEADO" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZVH_EMPLEADO_NEWSet" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADO_NEWType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZVH_EMPLEADO_NEW" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADO_NEWParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZVH_POS_EMPLEADO_HX" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZVH_REGIONAL" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_REGIONALType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZVH_SUCURSAL_CC" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_CCType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZVH_SUCURSAL_DIF_INV" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_DIF_INVType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZVH_SUCURSAL_NCC" EntityType="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_NCCType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_0BB44756F22ED7F4AA633BE05FE2310D" Association="ZGW_TABLERO_NOMINA_SRV.assoc_0BB44756F22ED7F4AA633BE05FE2310D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_SECSUCResults" Role="FromRole_assoc_0BB44756F22ED7F4AA633BE05FE2310D"/>
+                    <End EntitySet="ZVH_SUCURSAL_DIF_INV" Role="ToRole_assoc_0BB44756F22ED7F4AA633BE05FE2310D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_FF0CE509D69BE6C4A60D8AFC4C115E36" Association="ZGW_TABLERO_NOMINA_SRV.assoc_FF0CE509D69BE6C4A60D8AFC4C115E36" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLUTIVOResults" Role="FromRole_assoc_FF0CE509D69BE6C4A60D8AFC4C115E36"/>
+                    <End EntitySet="ZVH_SUCURSAL_DIF_INV" Role="ToRole_assoc_FF0CE509D69BE6C4A60D8AFC4C115E36"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C997FB7CAD1FFDB6510B274011B22BCF" Association="ZGW_TABLERO_NOMINA_SRV.assoc_C997FB7CAD1FFDB6510B274011B22BCF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOL_TABResults" Role="FromRole_assoc_C997FB7CAD1FFDB6510B274011B22BCF"/>
+                    <End EntitySet="ZVH_POS_EMPLEADO_HX" Role="ToRole_assoc_C997FB7CAD1FFDB6510B274011B22BCF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_3CD0F2F6AB3A443E5EF278FB22059449" Association="ZGW_TABLERO_NOMINA_SRV.assoc_3CD0F2F6AB3A443E5EF278FB22059449" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_CABEZAS_TABResults" Role="FromRole_assoc_3CD0F2F6AB3A443E5EF278FB22059449"/>
+                    <End EntitySet="ZVH_SUCURSAL_DIF_INV" Role="ToRole_assoc_3CD0F2F6AB3A443E5EF278FB22059449"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF" Association="ZGW_TABLERO_NOMINA_SRV.assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCC_TABResults" Role="FromRole_assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF"/>
+                    <End EntitySet="ZVH_DIR_NOMIN" Role="ToRole_assoc_F49C9DD31F2E71FB8C443CFC0AB46BBF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C410D8C93625BB0362D225F245DF7D17" Association="ZGW_TABLERO_NOMINA_SRV.assoc_C410D8C93625BB0362D225F245DF7D17" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_CABEZAS_TABResults" Role="FromRole_assoc_C410D8C93625BB0362D225F245DF7D17"/>
+                    <End EntitySet="ZVH_POS_EMPLEADO_HX" Role="ToRole_assoc_C410D8C93625BB0362D225F245DF7D17"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_839C961194C4BC83894D3FE821BC6E29" Association="ZGW_TABLERO_NOMINA_SRV.assoc_839C961194C4BC83894D3FE821BC6E29" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOL_TABResults" Role="FromRole_assoc_839C961194C4BC83894D3FE821BC6E29"/>
+                    <End EntitySet="ZVH_SUCURSAL_DIF_INV" Role="ToRole_assoc_839C961194C4BC83894D3FE821BC6E29"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0FC24AB1907C1AD09F8C35A1C927DA5D" Association="ZGW_TABLERO_NOMINA_SRV.assoc_0FC24AB1907C1AD09F8C35A1C927DA5D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_SECSUCResults" Role="FromRole_assoc_0FC24AB1907C1AD09F8C35A1C927DA5D"/>
+                    <End EntitySet="ZVH_REGIONAL" Role="ToRole_assoc_0FC24AB1907C1AD09F8C35A1C927DA5D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A86250A9165C8274DB65C431C032B14C" Association="ZGW_TABLERO_NOMINA_SRV.assoc_A86250A9165C8274DB65C431C032B14C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_BASEResults" Role="FromRole_assoc_A86250A9165C8274DB65C431C032B14C"/>
+                    <End EntitySet="ZVH_POS_EMPLEADO_HX" Role="ToRole_assoc_A86250A9165C8274DB65C431C032B14C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_868D226BB7E53A679635209E46044DCB" Association="ZGW_TABLERO_NOMINA_SRV.assoc_868D226BB7E53A679635209E46044DCB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOL_TABResults" Role="FromRole_assoc_868D226BB7E53A679635209E46044DCB"/>
+                    <End EntitySet="ZVH_REGIONAL" Role="ToRole_assoc_868D226BB7E53A679635209E46044DCB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C4B621B1C08BA9D22FA7F214B1F1211B" Association="ZGW_TABLERO_NOMINA_SRV.assoc_C4B621B1C08BA9D22FA7F214B1F1211B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_CABEZAS_TABResults" Role="FromRole_assoc_C4B621B1C08BA9D22FA7F214B1F1211B"/>
+                    <End EntitySet="ZVH_REGIONAL" Role="ToRole_assoc_C4B621B1C08BA9D22FA7F214B1F1211B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_85E423D8BBB9E66C64692C22EEAED058" Association="ZGW_TABLERO_NOMINA_SRV.assoc_85E423D8BBB9E66C64692C22EEAED058" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLUTIVO" Role="FromRole_assoc_85E423D8BBB9E66C64692C22EEAED058"/>
+                    <End EntitySet="ZC_NOMINA_EVOLUTIVOResults" Role="ToRole_assoc_85E423D8BBB9E66C64692C22EEAED058"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CAD41164E904AA374237BFA1D3139E22" Association="ZGW_TABLERO_NOMINA_SRV.assoc_CAD41164E904AA374237BFA1D3139E22" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_CABEZAS_TAB" Role="FromRole_assoc_CAD41164E904AA374237BFA1D3139E22"/>
+                    <End EntitySet="ZC_NOMINA_CABEZAS_TABResults" Role="ToRole_assoc_CAD41164E904AA374237BFA1D3139E22"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A" Association="ZGW_TABLERO_NOMINA_SRV.assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_SECSUCResults" Role="FromRole_assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A"/>
+                    <End EntitySet="ZVH_AREA_HX" Role="ToRole_assoc_9B8BACB4B0DBB6861CA4B28C8C75CD5A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_35834431E93ED565349EDB4E7BBF9BBE" Association="ZGW_TABLERO_NOMINA_SRV.assoc_35834431E93ED565349EDB4E7BBF9BBE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCC_TAB" Role="FromRole_assoc_35834431E93ED565349EDB4E7BBF9BBE"/>
+                    <End EntitySet="ZC_NOMINA_EVOLCC_TABResults" Role="ToRole_assoc_35834431E93ED565349EDB4E7BBF9BBE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_AE96A5D1EA2E471279C7E590241A7406" Association="ZGW_TABLERO_NOMINA_SRV.assoc_AE96A5D1EA2E471279C7E590241A7406" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_BASE" Role="FromRole_assoc_AE96A5D1EA2E471279C7E590241A7406"/>
+                    <End EntitySet="ZC_NOMINA_BASEResults" Role="ToRole_assoc_AE96A5D1EA2E471279C7E590241A7406"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_006E9F3EBEF73E2A03546D6206D4E7FE" Association="ZGW_TABLERO_NOMINA_SRV.assoc_006E9F3EBEF73E2A03546D6206D4E7FE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZVH_EMPLEADO_NEW" Role="FromRole_assoc_006E9F3EBEF73E2A03546D6206D4E7FE"/>
+                    <End EntitySet="ZVH_EMPLEADO_NEWSet" Role="ToRole_assoc_006E9F3EBEF73E2A03546D6206D4E7FE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_74934FA9809E48EEE18C33498FE0507D" Association="ZGW_TABLERO_NOMINA_SRV.assoc_74934FA9809E48EEE18C33498FE0507D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCC_TABResults" Role="FromRole_assoc_74934FA9809E48EEE18C33498FE0507D"/>
+                    <End EntitySet="ZVH_REGIONAL" Role="ToRole_assoc_74934FA9809E48EEE18C33498FE0507D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_06A1964F2030327ACBF91917244123D1" Association="ZGW_TABLERO_NOMINA_SRV.assoc_06A1964F2030327ACBF91917244123D1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLUTIVOResults" Role="FromRole_assoc_06A1964F2030327ACBF91917244123D1"/>
+                    <End EntitySet="ZVH_REGIONAL" Role="ToRole_assoc_06A1964F2030327ACBF91917244123D1"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_AE18E5DAF01297C466E8BBA562EF55DA" Association="ZGW_TABLERO_NOMINA_SRV.assoc_AE18E5DAF01297C466E8BBA562EF55DA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_BASEResults" Role="FromRole_assoc_AE18E5DAF01297C466E8BBA562EF55DA"/>
+                    <End EntitySet="ZVH_REGIONAL" Role="ToRole_assoc_AE18E5DAF01297C466E8BBA562EF55DA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15" Association="ZGW_TABLERO_NOMINA_SRV.assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOL_TAB" Role="FromRole_assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15"/>
+                    <End EntitySet="ZC_NOMINA_EVOL_TABResults" Role="ToRole_assoc_2D5A6B5FF50A3F57D25B2773FD6FEA15"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6FA1FEB6493FA938BA2D247AF437B8FE" Association="ZGW_TABLERO_NOMINA_SRV.assoc_6FA1FEB6493FA938BA2D247AF437B8FE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_PERSONAResults" Role="FromRole_assoc_6FA1FEB6493FA938BA2D247AF437B8FE"/>
+                    <End EntitySet="ZVH_SUCURSAL_NCC" Role="ToRole_assoc_6FA1FEB6493FA938BA2D247AF437B8FE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E09488046D664AAF9B54DE9A2D3D948F" Association="ZGW_TABLERO_NOMINA_SRV.assoc_E09488046D664AAF9B54DE9A2D3D948F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_SECSUCResults" Role="FromRole_assoc_E09488046D664AAF9B54DE9A2D3D948F"/>
+                    <End EntitySet="ZVH_POS_EMPLEADO_HX" Role="ToRole_assoc_E09488046D664AAF9B54DE9A2D3D948F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5B754A375B9232B2BC73D200E026DB6F" Association="ZGW_TABLERO_NOMINA_SRV.assoc_5B754A375B9232B2BC73D200E026DB6F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_CABEZAS_TABResults" Role="FromRole_assoc_5B754A375B9232B2BC73D200E026DB6F"/>
+                    <End EntitySet="ZVH_AREA_HX" Role="ToRole_assoc_5B754A375B9232B2BC73D200E026DB6F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_996E5EAA36D35E2122EA67D92D71473D" Association="ZGW_TABLERO_NOMINA_SRV.assoc_996E5EAA36D35E2122EA67D92D71473D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_SECSUC" Role="FromRole_assoc_996E5EAA36D35E2122EA67D92D71473D"/>
+                    <End EntitySet="ZCDS_C_NOMINA_SECSUCResults" Role="ToRole_assoc_996E5EAA36D35E2122EA67D92D71473D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_84DCFFFD48073C48316F50FA7BD637F4" Association="ZGW_TABLERO_NOMINA_SRV.assoc_84DCFFFD48073C48316F50FA7BD637F4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCC_TABResults" Role="FromRole_assoc_84DCFFFD48073C48316F50FA7BD637F4"/>
+                    <End EntitySet="ZVH_AREA_HX" Role="ToRole_assoc_84DCFFFD48073C48316F50FA7BD637F4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_49E2CAF8AAF04007556B21E329DA700B" Association="ZGW_TABLERO_NOMINA_SRV.assoc_49E2CAF8AAF04007556B21E329DA700B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOL_TABResults" Role="FromRole_assoc_49E2CAF8AAF04007556B21E329DA700B"/>
+                    <End EntitySet="ZVH_AREA_HX" Role="ToRole_assoc_49E2CAF8AAF04007556B21E329DA700B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0" Association="ZGW_TABLERO_NOMINA_SRV.assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCCResults" Role="FromRole_assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0"/>
+                    <End EntitySet="ZVH_REGIONAL" Role="ToRole_assoc_F5FC4DEA731E0BB2F2CA6DAAC02CF6F0"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2FD884B33C7F999BC9792382D7A0E302" Association="ZGW_TABLERO_NOMINA_SRV.assoc_2FD884B33C7F999BC9792382D7A0E302" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_PERSONA" Role="FromRole_assoc_2FD884B33C7F999BC9792382D7A0E302"/>
+                    <End EntitySet="ZCDS_C_NOMINA_PERSONAResults" Role="ToRole_assoc_2FD884B33C7F999BC9792382D7A0E302"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_21A9087A8AEB809F6D99E47941B354A7" Association="ZGW_TABLERO_NOMINA_SRV.assoc_21A9087A8AEB809F6D99E47941B354A7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCC_TABResults" Role="FromRole_assoc_21A9087A8AEB809F6D99E47941B354A7"/>
+                    <End EntitySet="ZVH_SUCURSAL_CC" Role="ToRole_assoc_21A9087A8AEB809F6D99E47941B354A7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_FBC7A1F15CC943B329D8414B21D7AFCF" Association="ZGW_TABLERO_NOMINA_SRV.assoc_FBC7A1F15CC943B329D8414B21D7AFCF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCCResults" Role="FromRole_assoc_FBC7A1F15CC943B329D8414B21D7AFCF"/>
+                    <End EntitySet="ZVH_AREA_HX" Role="ToRole_assoc_FBC7A1F15CC943B329D8414B21D7AFCF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5FF9360E353A867B706C23D3B3E578FA" Association="ZGW_TABLERO_NOMINA_SRV.assoc_5FF9360E353A867B706C23D3B3E578FA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCCResults" Role="FromRole_assoc_5FF9360E353A867B706C23D3B3E578FA"/>
+                    <End EntitySet="ZVH_DIR_NOMIN" Role="ToRole_assoc_5FF9360E353A867B706C23D3B3E578FA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_77C10C353F17C6050A633D064E849929" Association="ZGW_TABLERO_NOMINA_SRV.assoc_77C10C353F17C6050A633D064E849929" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCCResults" Role="FromRole_assoc_77C10C353F17C6050A633D064E849929"/>
+                    <End EntitySet="ZVH_POS_EMPLEADO_HX" Role="ToRole_assoc_77C10C353F17C6050A633D064E849929"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_53CE91CC4672A519EA7D849E385AE2DD" Association="ZGW_TABLERO_NOMINA_SRV.assoc_53CE91CC4672A519EA7D849E385AE2DD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_PERSONAResults" Role="FromRole_assoc_53CE91CC4672A519EA7D849E385AE2DD"/>
+                    <End EntitySet="ZVH_POS_EMPLEADO_HX" Role="ToRole_assoc_53CE91CC4672A519EA7D849E385AE2DD"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_89053415DA7728D48C997C0514FFBF87" Association="ZGW_TABLERO_NOMINA_SRV.assoc_89053415DA7728D48C997C0514FFBF87" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCC_TABResults" Role="FromRole_assoc_89053415DA7728D48C997C0514FFBF87"/>
+                    <End EntitySet="ZVH_POS_EMPLEADO_HX" Role="ToRole_assoc_89053415DA7728D48C997C0514FFBF87"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6A41D19F39BA15ECC98BA80DF2679B2E" Association="ZGW_TABLERO_NOMINA_SRV.assoc_6A41D19F39BA15ECC98BA80DF2679B2E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_PERSONAResults" Role="FromRole_assoc_6A41D19F39BA15ECC98BA80DF2679B2E"/>
+                    <End EntitySet="ZVH_REGIONAL" Role="ToRole_assoc_6A41D19F39BA15ECC98BA80DF2679B2E"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_48E262D63C94DC8344E8E9AC05C362E4" Association="ZGW_TABLERO_NOMINA_SRV.assoc_48E262D63C94DC8344E8E9AC05C362E4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_BASEResults" Role="FromRole_assoc_48E262D63C94DC8344E8E9AC05C362E4"/>
+                    <End EntitySet="ZVH_SUCURSAL_DIF_INV" Role="ToRole_assoc_48E262D63C94DC8344E8E9AC05C362E4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BFAE48E5AE51F80A4A2C9740EC14F13D" Association="ZGW_TABLERO_NOMINA_SRV.assoc_BFAE48E5AE51F80A4A2C9740EC14F13D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLUTIVOResults" Role="FromRole_assoc_BFAE48E5AE51F80A4A2C9740EC14F13D"/>
+                    <End EntitySet="ZVH_POS_EMPLEADO_HX" Role="ToRole_assoc_BFAE48E5AE51F80A4A2C9740EC14F13D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BAB1C54C80858A29D04A0F72B92C2C91" Association="ZGW_TABLERO_NOMINA_SRV.assoc_BAB1C54C80858A29D04A0F72B92C2C91" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCCResults" Role="FromRole_assoc_BAB1C54C80858A29D04A0F72B92C2C91"/>
+                    <End EntitySet="ZVH_SUCURSAL_CC" Role="ToRole_assoc_BAB1C54C80858A29D04A0F72B92C2C91"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2BF8D718C6A62F34323460F38136596D" Association="ZGW_TABLERO_NOMINA_SRV.assoc_2BF8D718C6A62F34323460F38136596D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLCC" Role="FromRole_assoc_2BF8D718C6A62F34323460F38136596D"/>
+                    <End EntitySet="ZC_NOMINA_EVOLCCResults" Role="ToRole_assoc_2BF8D718C6A62F34323460F38136596D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8E225F2432C12B39B6A771817CC003E4" Association="ZGW_TABLERO_NOMINA_SRV.assoc_8E225F2432C12B39B6A771817CC003E4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_PERSONAResults" Role="FromRole_assoc_8E225F2432C12B39B6A771817CC003E4"/>
+                    <End EntitySet="ZVH_AREA_HX" Role="ToRole_assoc_8E225F2432C12B39B6A771817CC003E4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_97A725DE0FBD68B1F09AAEDBA810E025" Association="ZGW_TABLERO_NOMINA_SRV.assoc_97A725DE0FBD68B1F09AAEDBA810E025" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_EVOLUTIVOResults" Role="FromRole_assoc_97A725DE0FBD68B1F09AAEDBA810E025"/>
+                    <End EntitySet="ZVH_AREA_HX" Role="ToRole_assoc_97A725DE0FBD68B1F09AAEDBA810E025"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B8AF700EEAECD8500CEB4EB20A9E6890" Association="ZGW_TABLERO_NOMINA_SRV.assoc_B8AF700EEAECD8500CEB4EB20A9E6890" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_C_NOMINA_PERSONAResults" Role="FromRole_assoc_B8AF700EEAECD8500CEB4EB20A9E6890"/>
+                    <End EntitySet="ZVH_EMPLEADO" Role="ToRole_assoc_B8AF700EEAECD8500CEB4EB20A9E6890"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8F43D9B445783CE24B80AF47A5053BE1" Association="ZGW_TABLERO_NOMINA_SRV.assoc_8F43D9B445783CE24B80AF47A5053BE1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_NOMINA_BASEResults" Role="FromRole_assoc_8F43D9B445783CE24B80AF47A5053BE1"/>
+                    <End EntitySet="ZVH_AREA_HX" Role="ToRole_assoc_8F43D9B445783CE24B80AF47A5053BE1"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZSUCURS1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help para sucursal nom. c.central"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_SUCURSAL_NCC"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZSUCURS1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZREGIONAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for Regional"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_REGIONAL"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZREGIONAL"/>
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="langu"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FILTRO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZPOS_UNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Posicion Empleado"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_POS_EMPLEADO_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZPOS_UNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZCOCEUNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Area"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_AREA_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZCOCEUNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZSUCURS1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help para Sucursal en Dif. de Inv."/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_SUCURSAL_DIF_INV"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZSUCURS1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZREGIONAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for Regional"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_REGIONAL"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZREGIONAL"/>
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="langu"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FILTRO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZCOCEUNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Area"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_AREA_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZCOCEUNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZPOS_UNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Posicion Empleado"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_POS_EMPLEADO_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZPOS_UNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZSUCURS1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help para Sucursal en Dif. de Inv."/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_SUCURSAL_DIF_INV"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZSUCURS1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZREGIONAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for Regional"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_REGIONAL"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZREGIONAL"/>
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="langu"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FILTRO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZCOCEUNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Area"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_AREA_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZCOCEUNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZPOS_UNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Posicion Empleado"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_POS_EMPLEADO_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZPOS_UNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZSUCURS1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help para Sucursal en Dif. de Inv."/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_SUCURSAL_DIF_INV"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZSUCURS1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZREGIONAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for Regional"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_REGIONAL"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZREGIONAL"/>
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="langu"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FILTRO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZCOCEUNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Area"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_AREA_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZCOCEUNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZPOS_UNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Posicion Empleado"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_POS_EMPLEADO_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZPOS_UNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZSUCURS1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help para casa central"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_SUCURSAL_CC"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZSUCURS1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZREGIONAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for Regional"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_REGIONAL"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZREGIONAL"/>
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="langu"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FILTRO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZDIRECCION" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Dirección Nomina"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_DIR_NOMIN"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZDIRECCION"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZDIRECCION_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZCOCEUNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Area"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_AREA_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZCOCEUNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZPOS_UNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Posicion Empleado"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_POS_EMPLEADO_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZPOS_UNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZSUCURS1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help para casa central"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_SUCURSAL_CC"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZSUCURS1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZREGIONAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for Regional"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_REGIONAL"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZREGIONAL"/>
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="langu"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FILTRO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZDIRECCION" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Dirección Nomina"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_DIR_NOMIN"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZDIRECCION"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZDIRECCION_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZCOCEUNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Area"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_AREA_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZCOCEUNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZPOS_UNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Posicion Empleado"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_POS_EMPLEADO_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZPOS_UNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZSUCURS1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help para Sucursal en Dif. de Inv."/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_SUCURSAL_DIF_INV"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZSUCURS1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZREGIONAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for Regional"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_REGIONAL"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZREGIONAL"/>
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="langu"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FILTRO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZCOCEUNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Area"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_AREA_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZCOCEUNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZPOS_UNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Posicion Empleado"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_POS_EMPLEADO_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZPOS_UNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZSUCURS1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help para Sucursal en Dif. de Inv."/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_SUCURSAL_DIF_INV"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZSUCURS1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Sucursal_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZREGIONAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value help for Regional"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_REGIONAL"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZREGIONAL"/>
+                                    <PropertyValue Property="ValueListProperty" String="Regional"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="langu"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Regional_t"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FILTRO"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZCOCEUNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Area"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_AREA_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZCOCEUNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZCOCEUNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZPOS_UNIF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Horas extra para Posicion Empleado"/>
+                        <PropertyValue Property="CollectionPath" String="ZVH_POS_EMPLEADO_HX"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZPOS_UNIF"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZPOS_UNIF_T"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZCDS_C_NOMINA_PERSONA" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZCDS_C_NOMINA_PERSONAResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>ANTIGUEDAD_TOTAL</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZCDS_C_NOMINA_SECSUC" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZCDS_C_NOMINA_SECSUCResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>ANTIGUEDAD_TOTAL</PropertyPath>
+                                <PropertyPath>ZCONT_ACTU</PropertyPath>
+                                <PropertyPath>ZCONT_MMAA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_BASE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_BASEResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>ANTIGUEDAD_TOTAL</PropertyPath>
+                                <PropertyPath>ZCONT_ACTU</PropertyPath>
+                                <PropertyPath>ZCONT_MMAA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_CABEZAS_TAB" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_CABEZAS_TABResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>ANTIGUEDAD_TOTAL</PropertyPath>
+                                <PropertyPath>ZCONT_ACTU</PropertyPath>
+                                <PropertyPath>ZCONT_MMAA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_EVOLCC" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_DESDE</PropertyPath>
+                                <PropertyPath>P_HASTA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_DESDE</PropertyPath>
+                                <PropertyPath>P_HASTA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_EVOLCCResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>ANTIGUEDAD_TOTAL</PropertyPath>
+                                <PropertyPath>ZCONT_ACTU</PropertyPath>
+                                <PropertyPath>ZCONT_MMAA</PropertyPath>
+                                <PropertyPath>PROG_MMAA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_EVOLCC_TAB" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_DESDE</PropertyPath>
+                                <PropertyPath>P_HASTA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_DESDE</PropertyPath>
+                                <PropertyPath>P_HASTA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_EVOLCC_TABResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>ANTIGUEDAD_TOTAL</PropertyPath>
+                                <PropertyPath>ZCONT_ACTU</PropertyPath>
+                                <PropertyPath>ZCONT_MMAA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_EVOLUTIVO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_DESDE</PropertyPath>
+                                <PropertyPath>P_HASTA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_DESDE</PropertyPath>
+                                <PropertyPath>P_HASTA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_EVOLUTIVOResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>ANTIGUEDAD_TOTAL</PropertyPath>
+                                <PropertyPath>ZCONT_ACTU</PropertyPath>
+                                <PropertyPath>ZCONT_MMAA</PropertyPath>
+                                <PropertyPath>PROG_MMAA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_EVOL_TAB" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_DESDE</PropertyPath>
+                                <PropertyPath>P_HASTA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_DESDE</PropertyPath>
+                                <PropertyPath>P_HASTA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZC_NOMINA_EVOL_TABResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>ANTIGUEDAD_TOTAL</PropertyPath>
+                                <PropertyPath>ZCONT_ACTU</PropertyPath>
+                                <PropertyPath>ZCONT_MMAA</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZGW_TABLERO_NOMINA_SRV_Entities/ZVH_EMPLEADO_NEW" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_FMES</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://chbw4apdev.vital.com.ar:8000/sap/opu/odata/sap/ZGW_TABLERO_NOMINA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://chbw4apdev.vital.com.ar:8000/sap/opu/odata/sap/ZGW_TABLERO_NOMINA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

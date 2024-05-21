@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: dso.zuitabsanciones
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://chbw4apdev.vital.com.ar:8000
+          client: "100"
+        app:
+          name: ZUI_TAB_SANCION
+          package: ZKPIS_APP
+          transport: B4DK917128
+        exclude:
+          - /test/

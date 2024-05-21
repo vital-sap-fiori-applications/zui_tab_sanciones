@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zgw_tablero_nomina_srv/$metadata">
+        <edmx:Include Namespace="ZGW_TABLERO_NOMINA_SRV" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zgw_tablero_nomina_anno_mdl.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZCALMONTH">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZSUCURS1_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZREGIONAL_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZPOS_UNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZEMPLOYEE_T"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/FECHA_BAJA_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZCOCEUNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/COSTCENTER"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/P_FMES">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZSUCURS1">
+                <Annotation Term="Common.Text" Path="ZSUCURS1_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZREGIONAL">
+                <Annotation Term="Common.Text" Path="ZREGIONAL_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZPOS_UNIF">
+                <Annotation Term="Common.Text" Path="ZPOS_UNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZEMPLOYEE">
+                <Annotation Term="Common.Text" Path="ZEMPLOYEE_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/GENERO"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult/ZCOCEUNIF">
+                <Annotation Term="Common.Text" Path="ZCOCEUNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_PERSONAResult">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZDIRECCION"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZSUCURS1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZEMPLOYEE"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="JORNADA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD_TOTAL"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ZSUCURS1</PropertyPath>
+                        <PropertyPath>ZREGIONAL</PropertyPath>
+                        <PropertyPath>ZCOCEUNIF</PropertyPath>
+                        <PropertyPath>ZPOS_UNIF</PropertyPath>
+                        <PropertyPath>GENERO</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZCALMONTH">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZSUCURS1_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZREGIONAL_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZCOCEUNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZPOS_UNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/COSTCENTER">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/P_FMES">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZSUCURS1">
+                <Annotation Term="Common.Text" Path="ZSUCURS1_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZREGIONAL">
+                <Annotation Term="Common.Text" Path="ZREGIONAL_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZCOCEUNIF">
+                <Annotation Term="Common.Text" Path="ZCOCEUNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/ZPOS_UNIF">
+                <Annotation Term="Common.Text" Path="ZPOS_UNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult/GENERO"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZCDS_C_NOMINA_SECSUCResult">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZSUCURS1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="JORNADA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD_TOTAL"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ZSUCURS1</PropertyPath>
+                        <PropertyPath>ZREGIONAL</PropertyPath>
+                        <PropertyPath>ZCOCEUNIF</PropertyPath>
+                        <PropertyPath>ZPOS_UNIF</PropertyPath>
+                        <PropertyPath>GENERO</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZCALMONTH">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZSUCURS1_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZREGIONAL_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZCOCEUNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZPOS_UNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/COSTCENTER">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/P_FMES">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZSUCURS1">
+                <Annotation Term="Common.Text" Path="ZSUCURS1_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZREGIONAL">
+                <Annotation Term="Common.Text" Path="ZREGIONAL_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZCOCEUNIF">
+                <Annotation Term="Common.Text" Path="ZCOCEUNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/ZPOS_UNIF">
+                <Annotation Term="Common.Text" Path="ZPOS_UNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult/GENERO"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_BASEResult">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZSUCURS1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="JORNADA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD_TOTAL"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ZSUCURS1</PropertyPath>
+                        <PropertyPath>ZREGIONAL</PropertyPath>
+                        <PropertyPath>ZCOCEUNIF</PropertyPath>
+                        <PropertyPath>ZPOS_UNIF</PropertyPath>
+                        <PropertyPath>GENERO</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZCALMONTH">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZSUCURS1_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZREGIONAL_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZCOCEUNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZPOS_UNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/COSTCENTER">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/P_FMES">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZSUCURS1">
+                <Annotation Term="Common.Text" Path="ZSUCURS1_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZREGIONAL">
+                <Annotation Term="Common.Text" Path="ZREGIONAL_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZCOCEUNIF">
+                <Annotation Term="Common.Text" Path="ZCOCEUNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/ZPOS_UNIF">
+                <Annotation Term="Common.Text" Path="ZPOS_UNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult/GENERO"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_CABEZAS_TABResult">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZSUCURS1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD_TOTAL"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ZSUCURS1</PropertyPath>
+                        <PropertyPath>ZREGIONAL</PropertyPath>
+                        <PropertyPath>ZCOCEUNIF</PropertyPath>
+                        <PropertyPath>ZPOS_UNIF</PropertyPath>
+                        <PropertyPath>GENERO</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZSUCURS1_T"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZREGIONAL_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZDIRECCION_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZCOCEUNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZPOS_UNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZCOSTCENTER">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/P_DESDE">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/P_HASTA">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZSUCURS1">
+                <Annotation Term="Common.Text" Path="ZSUCURS1_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZREGIONAL">
+                <Annotation Term="Common.Text" Path="ZREGIONAL_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZDIRECCION">
+                <Annotation Term="Common.Text" Path="ZDIRECCION_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZCOCEUNIF">
+                <Annotation Term="Common.Text" Path="ZCOCEUNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/ZPOS_UNIF">
+                <Annotation Term="Common.Text" Path="ZPOS_UNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult/GENERO"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCCResult">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZDIRECCION"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZSUCURS1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZJORNADA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PROG_MMAA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD_TOTAL"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ZDIRECCION</PropertyPath>
+                        <PropertyPath>ZCOCEUNIF</PropertyPath>
+                        <PropertyPath>ZPOS_UNIF</PropertyPath>
+                        <PropertyPath>GENERO</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZSUCURS1_T"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZREGIONAL_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZDIRECCION_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZCOCEUNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZPOS_UNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZCOSTCENTER">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/P_DESDE">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/P_HASTA">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZSUCURS1">
+                <Annotation Term="Common.Text" Path="ZSUCURS1_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZREGIONAL">
+                <Annotation Term="Common.Text" Path="ZREGIONAL_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZDIRECCION">
+                <Annotation Term="Common.Text" Path="ZDIRECCION_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZCOCEUNIF">
+                <Annotation Term="Common.Text" Path="ZCOCEUNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/ZPOS_UNIF">
+                <Annotation Term="Common.Text" Path="ZPOS_UNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult/GENERO"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLCC_TABResult">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZDIRECCION"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZSUCURS1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZJORNADA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD_TOTAL"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ZDIRECCION</PropertyPath>
+                        <PropertyPath>ZCOCEUNIF</PropertyPath>
+                        <PropertyPath>ZPOS_UNIF</PropertyPath>
+                        <PropertyPath>GENERO</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZSUCURS1_T"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZREGIONAL_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZCOCEUNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZPOS_UNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZCOSTCENTER">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/P_DESDE">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/P_HASTA">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZSUCURS1">
+                <Annotation Term="Common.Text" Path="ZSUCURS1_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZREGIONAL">
+                <Annotation Term="Common.Text" Path="ZREGIONAL_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZCOCEUNIF">
+                <Annotation Term="Common.Text" Path="ZCOCEUNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/ZPOS_UNIF">
+                <Annotation Term="Common.Text" Path="ZPOS_UNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult/GENERO"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOLUTIVOResult">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Nomina evolutivo"/>
+                        <PropertyValue Property="TypeNamePlural" String="Nomina evolutivo"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZSUCURS1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZJORNADA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PROG_MMAA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD_TOTAL"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="RequestAtLeast">
+                            <Collection>
+                                <PropertyPath>ZCONT_MMAA</PropertyPath>
+                                <PropertyPath>ZCONT_ACTU</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ZSUCURS1</PropertyPath>
+                        <PropertyPath>ZREGIONAL</PropertyPath>
+                        <PropertyPath>ZCOCEUNIF</PropertyPath>
+                        <PropertyPath>ZPOS_UNIF</PropertyPath>
+                        <PropertyPath>GENERO</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZSUCURS1_T"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZREGIONAL_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZCOCEUNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZPOS_UNIF_T">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZCOSTCENTER">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/P_DESDE">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/P_HASTA">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZSUCURS1">
+                <Annotation Term="Common.Text" Path="ZSUCURS1_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZREGIONAL">
+                <Annotation Term="Common.Text" Path="ZREGIONAL_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZCOCEUNIF">
+                <Annotation Term="Common.Text" Path="ZCOCEUNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/ZPOS_UNIF">
+                <Annotation Term="Common.Text" Path="ZPOS_UNIF_T">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult/GENERO"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZC_NOMINA_EVOL_TABResult">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZSUCURS1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ZJORNADA"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ANTIGUEDAD_TOTAL"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ZSUCURS1</PropertyPath>
+                        <PropertyPath>ZREGIONAL</PropertyPath>
+                        <PropertyPath>ZCOCEUNIF</PropertyPath>
+                        <PropertyPath>ZPOS_UNIF</PropertyPath>
+                        <PropertyPath>GENERO</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADOType/ZEMPLOYEE"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADO_NEWType/ZEMPLOYEE"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZVH_EMPLEADO_NEWType/P_FMES">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZVH_POS_EMPLEADO_HXType/ZPOS_UNIF">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_CCType/Regional"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_DIF_INVType/Regional"/>
+            <Annotations Target="ZGW_TABLERO_NOMINA_SRV.ZVH_SUCURSAL_NCCType/Regional"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,149 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "dso.zuitabsanciones",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.12.2",
+      "toolsId": "f8c02372-4e01-45b1-87e2-2d59ef7a8fdf"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZGW_TABLERO_NOMINA_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZGW_TABLERO_NOMINA_ANNO_MDL",
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZGW_TABLERO_NOMINA_ANNO_MDL": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZGW_TABLERO_NOMINA_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZGW_TABLERO_NOMINA_ANNO_MDL.xml"
+        }
+      },
+      "ZGW_SEGURIDAD_SRV": {
+        "uri": "/sap/opu/odata/sap/ZGW_SEGURIDAD_SRV/",
+        "type": "OData",
+        "settings": {}
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.124.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.suite.ui.generic.template": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "dso.zuitabsanciones.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "ZGW_SEGURIDAD_SRV": {
+        "dataSource": "ZGW_SEGURIDAD_SRV",
+        "preload": true,
+        "settings": {}
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "dso.zuitabsanciones.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false,
+        "path": "dso.zuitabsanciones.view"
+      },
+      "routes": [
+        {
+          "name": "app",
+          "pattern": "",
+          "target": "app"
+        },
+        {
+          "pattern": ":?query:",
+          "name": "App",
+          "target": "App"
+        }
+      ],
+      "targets": {
+        "TargetApp": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "App",
+          "viewName": "App"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "dso.zuitabsanciones.view.Home",
+      "type": "XML",
+      "async": true,
+      "id": "Home"
+    }
+  }
+}
